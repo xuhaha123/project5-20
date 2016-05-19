@@ -1,0 +1,240 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="container-fluid">
+    <div class="">
+      <ul class="quick-actions">
+        <li class="bg_lb"> <a href=""> <i class="icon-signal"></i> <span class="label label-important">10</span> 分类列表 </a> </li>
+      </ul>
+    </div>
+  </div>
+ <script type="text/javascript">
+    function setCookie(name, value) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() + 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+    function getCookie(name)
+    {
+        var regExp = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        var arr = document.cookie.match(regExp);
+        if (arr == null) {
+            return null;
+        }
+        return unescape(arr[2]);
+    }
+</script>
+    <div class="widget-box">
+      <form action="{:U('Admin/Cate/Index')}" method="get" id="mid">
+          <div class="widget-content nopadding">
+            <div role="grid" class="dataTables_wrapper" id=""><div class=""><div id="" class="dataTables_length">
+            <ul class="select2-results">   </ul></div></div>
+            <select name="num" size="1" aria-controls="DataTables_Table_0" onChange="document.getElementById('mid').submit()" id="select_1" onclick="setCookie('select_1',this.selectedIndex)" >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            </select>
+            <script src="__PUBLIC__/Admin/js/jquery-1.8.3.min.js"></script>
+            <script type="text/javascript">
+            var selectedIndex = getCookie("select_1");
+            // alert(selectedIndex);
+            if(selectedIndex != null) {
+            document.getElementById("select_1").selectedIndex = selectedIndex;
+          }
+          </script>
+
+
+
+           
+
+
+         <!--   <label>Search: <input type="text" aria-controls="DataTables_Table_0"></label></button> -->
+            <label><input value="{$Think.get.keyword}" name="keyword" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
+                            <button class="btn btn-primary">搜索</button>
+
+         </form>
+
+
+             <!-- <button><label>Search: <input type="text" aria-controls="DataTables_Table_0"></label> </button> -->
+
+            </div></div>
+            <!-- </form> -->
+            <table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
+              <thead>
+                <tr role="row">
+                  <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 183px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                    <div class="DataTables_sort_wrapper">ID
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                    </div>
+                  </th>
+                  <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 301px;" aria-label="Browser: activate to sort column ascending">
+                    <div class="DataTables_sort_wrapper">姓名
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div>
+                  </th>
+                  <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 272px;" aria-label="Platform(s): activate to sort column ascending">
+                    <div class="DataTables_sort_wrapper">Pid
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div>
+                  </th>
+                  <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 162px;" aria-label="Engine version: activate to sort column ascending">
+                    <div class="DataTables_sort_wrapper">Path
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                    </div>
+                  </th>
+                  <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 162px;" aria-label="Engine version: activate to sort column ascending">
+                    <div class="DataTables_sort_wrapper">状态
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                    </div>
+                  </th>
+                  <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 362px;" aria-label="Engine version: activate to sort column ascending">
+                    <div class="DataTables_sort_wrapper">操作
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              
+            <tbody role="alert" aria-live="polite" aria-relevant="all">
+            <foreach name="cates" item="vo">
+            <tr class="gradeA odd">
+                  <td class="sorting_1 sid">{$vo.id}</td>
+                  <td class=" ">{$vo.name}</td>
+                  <td class=" ">{$vo.pid}</td>
+                  <td class="center ">{$vo.path}</td>
+                   <td class="center "><button class="bts">{$vo.display}</button></td>
+                  <td class="center ">
+                    <a href="{:U('Admin/Cate/edit',array('id'=>$vo['id']))}">
+                    <button class= "btn btn-info"><i class="icon-edit btn-edit"></i>编辑</button></a>
+                    <button class="btn btn-danger btn-del bt-de">
+                    <i class="icon-remove"></i>删除</button>
+                  </td>
+
+            </tr>
+            </foreach>
+            </tbody></table>
+            <style type="text/css">
+                          #pages a,#pages span{
+                           background-color: #fff;
+                           border: 1px solid #ddd;
+                           color: #337ab7;
+                           float: left;
+                           line-height: 1.42857;
+                           margin-left: -1px;
+                           padding: 6px 12px;
+                           position: relative;
+                           text-decoration: none;
+                       }
+                       #pages span{
+                      /*background:#337ab7;
+                      color:white;*/
+                      background-color: #337ab7;
+                      border-color: #337ab7;
+                      color: #fff;
+                      cursor: default;
+                      z-index: 2;
+                    }
+                  </style>
+                  
+                <div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+                <div class="dataTables_filter" id="DataTables_Table_0_filter">
+                
+                </div><div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate">
+              
+                        <div id="pages">
+                         {$pages}
+                        </div>
+              
+                  
+
+                </div></div></div>
+                
+          </div>
+        
+        </div>
+        <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+        // alert($);
+        $(function(){
+          //   $('.btn-del').click(function(){
+          //   // alert('ssss');
+          //   var v =$(this).parents('.gradeA').find('.sid').html();
+          //   // alert('qq');
+          //   var url ="{:U('Admin/Cate/delete')}";
+          //   var tr =$(this);
+          //   $.ajax({
+          //     url: url,
+          //     type: 'get',
+          //     data: {id:v},
+          //     success:function(data){
+          //                 if(data == 0){
+          //                   // location.href =location.href;
+          //                   tr.parents('.tr').remove();
+
+          //                 }else{
+          //                   alert('删除失败');
+          //                 }
+          //             }
+          //         })
+          // })
+             $('.bt-de').bind("click",function() {
+     // alert('aaa');
+             var i =$(this).parents('tr').find('.sorting_1').html();
+             // alert(i);
+             var tr =$(this);
+             // alert(tr);
+             $.ajax({
+               url:'{:U("Admin/Cate/delete")}',
+               data:{id:i},
+               type:'get',
+               success:function(data){
+                 if(data){
+                   tr.parents('tr').remove();
+                 }else{alert('删除失败');}
+               }
+             })
+            });
+
+            $('.bts').bind("click",function(){
+            var a  =$(this).html();
+            // alert(a);
+            var id = $(this).parents('tr').find('td:first').html();
+            var b =$(this);
+            // alert(b);
+            if(a == '开启'){
+                   $.ajax({
+                    url:'{:U("Admin/Cate/do_ajax")}',
+                    data:{id:id,display:0},
+                    type:'post',
+                    success:function(data){
+                      if(data){
+                        b.html('隐藏');
+                      }
+                    }
+                  })
+
+            }else if(a == '隐藏'){
+              $.ajax({
+                url:'{:U("Admin/Cate/do_ajax")}',
+                data:{id:id,display:1},
+                type:'post',
+                success:function(data){
+                  if(data){
+                    b.html('开启');
+                  }
+                }
+              })
+            }
+          })   
+
+
+
+
+
+
+  })
+          
+
+
+
+        </script>
+
+</block>

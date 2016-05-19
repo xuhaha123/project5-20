@@ -1,0 +1,106 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="container-fluid">
+    <div class="quick-actions_homepage">
+      <ul class="quick-actions">
+        <li class="bg_lb"> <a href=""> <i class="icon-signal"></i> <span class="label label-important">10</span> 友情链接列表 </a> </li>
+      </ul>
+    </div>
+  </div>
+  <div class="widget-box">
+  <form action="{:U('Admin/Link/index')}" method="get">
+    <div class="widget-content nopadding">
+      <div role="grid" class="dataTables_wrapper" id="DataTables_Table_0_wrapper"><div class=""><div id="" class="dataTables_length">
+      <ul class="select2-results">   </ul></div></div>
+      <select name="num" size="1" aria-controls="DataTables_Table_0">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+     <!--  <label>Search: <input type="text" aria-controls="DataTables_Table_0"><button>搜索</button></label></label> -->
+      <label>Search:<input value="{$Think.get.keyword}" name="keyword" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label><button class="btn btn-primary" style="margin-top:-12px;">搜索</button>
+
+      </div>
+    </div>
+
+</form>
+<table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
+  <thead>
+    <tr role="row">
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 183px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+        <div class="DataTables_sort_wrapper">ID
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+        </div>
+      </th>
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 200px;" aria-label="Browser: activate to sort column ascending">
+        <div class="DataTables_sort_wrapper">链接名
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div>
+      </th>
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 200px;" aria-label="Browser: activate to sort column ascending">
+        <div class="DataTables_sort_wrapper">链接地址
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div>
+      </th>
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 162px;" aria-label="Engine version: activate to sort column ascending">
+        <div class="DataTables_sort_wrapper">链接图片
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+        </div>
+      </th>
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 300px;" aria-label="Engine version: activate to sort column ascending">
+        <div class="DataTables_sort_wrapper">操作
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  
+<tbody role="alert" aria-live="polite" aria-relevant="all">
+  <volist name="links" id="vo">
+    <tr class="gradeA odd">
+          <td class="  sorting_1" style="text-align:center">{$vo.id}</td>
+          <td class=" " style="text-align:center">{$vo.name}</td>
+          <td class=" " style="text-align:center">{$vo.url}</td>
+          <td class="center " style="text-align:center"><img src="__PUBLIC__/{$vo.pic}" width="50px"></td>
+          <td class="center " style="text-align:center">
+            <a href="{:U('Admin/Link/edit',array('id'=>$vo['id']))}">
+            <button class="btn btn-primary"><i class="icon-edit"></i>编辑</button></a>
+            <a href="{:U('Admin/Link/delete',array('id'=>$vo['id']))}">
+            <button class="btn btn-danger btn-del"><i class="icon-edit"></i>
+            删除</button></a>
+          </td>
+    </tr>
+  </volist>
+</tbody>
+</table>
+  <style type="text/css">
+      #pages a,#pages span{
+       background-color: #fff;
+       border: 1px solid #ddd;
+       color: #337ab7;
+       float: left;
+       line-height: 1.42857;
+       margin-left: -1px;
+       padding: 6px 12px;
+       position: relative;
+       text-decoration: none;
+   }
+   #pages span{
+  /*background:#337ab7;
+  color:white;*/
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: #fff;
+  cursor: default;
+  z-index: 2;
+}
+  </style>
+  <div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+   
+    <div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate">
+      <div id="pages">
+        {$pages}
+      </div>
+    </div>
+  </div>
+
+</block>

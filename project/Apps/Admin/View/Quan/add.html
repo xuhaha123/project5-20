@@ -1,0 +1,50 @@
+<extend name="./Public/public"/>
+<block name="title">
+
+  <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>权限添加</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form class="form-horizontal" method="post" action="{:U('Admin/Quan/insert')}">
+
+            
+
+            <div class="control-group">
+              <label class="control-label" >权限名称</label>
+              <div class="controls">
+                <input type="text" name="title" data-color="#ffffff">
+                </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label">规则路径</label>
+              <div class="controls">
+                <input type="text" name="name"  data-date-format="dd-mm-yyyy" data-date="01-02-2013">
+                 </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label">状态</label>
+              <div class="controls">
+               <select name="status" id="">
+                 <option value="1">开启</option>
+                 <option value="0">关闭</option>
+               </select>
+              </div>
+            </div>
+            
+            
+            
+           
+            <div class="form-actions">
+              <button class="btn btn-success" type="submit">添加</button>
+              <button class="btn btn-primary" type="reset">重置</button>
+              <!-- <button class="btn btn-info" type="submit">Edit</button>
+              <button class="btn btn-danger" type="submit">Cancel</button> -->
+            </div>
+          </form>
+        </div>
+  </div>
+
+</block>

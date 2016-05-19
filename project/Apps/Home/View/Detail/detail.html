@@ -1,0 +1,84 @@
+<extend name="./Head/head"/>
+<block name="title">
+<title>分类图书</title>
+</block>
+<block name="head">
+<div>
+
+
+<div class="navbar-bg-top">
+<div class="navbar-content layout">
+<div class="navbar-content-box">
+<dl class="index ">
+<dt><a href="/">首页</a></dt>
+</dl>
+<dl class="cat ">
+<dt><a>分类</a></dt>
+<dd>
+<div><a class="art" target="_blank" href="/art">艺术</a></div>
+<div><a class="technology" target="_blank" href="/science">科技</a></div>
+<div><a target="_blank" href="/ziran">自然</a></div>
+<div><a target="_blank" href="/wenhua">文化</a></div>
+<div><a target="_blank" href="/dili">地理</a></div>
+<div><a target="_blank" href="/shenghuo">生活</a></div>
+<div><a target="_blank" href="/shehui">社会</a></div>
+<div><a target="_blank" href="/renwu">人物</a></div>
+<div><a target="_blank" href="/jingji">经济</a></div>
+<div><a target="_blank" href="/tiyu">体育</a></div>
+<div><a target="_blank" href="/lishi">历史</a></div>
+</dd>
+</dl>
+<dl class="special ">
+<dt><a>特色百科</a></dt>
+<dd>
+<div><a target="_blank" href="/calendar/">历史上的今天</a></div>
+<div><a target="_blank" href="/museum/">数字博物馆</a></div>
+<div><a target="_blank" href="/shiji/2015?fr=navbar">史记·2015</a></div>
+<div><a target="_blank" href="/city/">城市百科</a></div>
+<div><a target="_blank" href="/operation/worldwar2">二战百科</a></div>
+<div><a target="_blank" href="/feiyi?fr=dhlfeiyi">非遗百科</a></div>
+</dd>
+</dl>
+<dl class="user">
+<dt><a>用户</a></dt>
+<dd>
+<div><a target="_blank" href="/kedou/">蝌蚪团</a></div>
+<div><a target="_blank" href="/event/ranmeng/">燃梦计划</a></div>
+<div><a target="_blank" href="/task/">百科任务</a></div>
+<div><a target="_blank" href="/mall/">百科商城</a></div>
+</dd>
+</dl>
+<dl class="cooperation">
+<dt><a>权威合作</a></dt>
+<dd>
+<div><a target="_blank" href="/operation/cooperation#joint">合作模式</a></div>
+<div><a target="_blank" href="/operation/cooperation#issue">常见问题</a></div>
+<div><a target="_blank" href="/operation/cooperation#connection">联系方式</a></div>
+</dd>
+</dl>
+<dl class="mobile">
+<dt><a>手机百科</a></dt>
+<dd>
+<div><a target="_blank" href="/m#download">客户端</a></div>
+<div><a target="_blank" href="/m#wap">网页版</a></div>
+</dd>
+</dl>
+<div class="usercenter">
+<div><a target="_blank" href="/usercenter"><em class="cmn-icon cmn-icons cmn-icons_navbar-usercenter"></em>个人中心</a></div>
+</div></div>
+</div>
+</div>
+
+
+<div class="floats">
+	<h3>生活</h3>
+	<ul class="xs">
+		<foreach name="catef5" item="vo">
+			<li class="xs1">{$vo.name}</li>
+			<li class="xs1">{$vo.name}</li>
+		</foreach>
+	</ul>
+</div>
+
+</div>
+</block>

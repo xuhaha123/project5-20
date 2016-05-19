@@ -1,0 +1,72 @@
+<extend name="./Head/head"/>
+<block name="title">
+<link rel="stylesheet" href="__PUBLIC__/Home/css/charge.css" type="text/css"/>
+<script type="text/javascript" src="__PUBLIC__/Home/js/charge.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/charge1.js"></script>
+<title>充值中心</title>
+</block>
+<block name="head">
+
+<div class="w" id="headers">
+   		
+   		<div class="clr"></div>
+</div>
+<div class="w main">
+   		<div class="o-mt">
+   			<h2>填写充值金额</h2>
+   		</div>
+         <form action="{:U('Home/Charge/insert')}" method="post">
+   		<div class="m">
+   			<div class="form">
+   				<div class="item">
+   					<span class="label">充值账户：</span>
+					<!-- <div id="username" class="fl">jd_722169546c4dc</div> -->
+					<input type="text" value="{$_SESSION['username']}" class="fl" readonly>
+					<div class="clr"></div>
+   				</div>
+   				<div class="item">
+   					<span class="label">充值金额：</span>
+   					<div class="fl">
+   						<input type="text" onfocus="cleanMes();" onblur="checkMoney();" id="txtAccount" name="rechage" class="text">
+						<label>元</label>
+						<div class="msg-text"></div>
+						<div class="msg-error">只能填写大于等于10，小于等于50000的整数金额</div>
+						<div class="clr"></div>
+						<div class="msg-text">请注意：支持国内主流银行储蓄卡充值，在线支付成功后，充值金额会在1分钟内到账；如果需要提现，请致电网站客服办理</div>
+						<div class="clr"></div>
+						<div class="i-tips">
+							<s class="icon-info05"></s>客服电话：400-616-5500&nbsp;|&nbsp;0527-88105500&nbsp;&nbsp;&nbsp;&nbsp;服务时间：周一至周日 0:00-24:00
+                        </div>
+   					</div>
+   					<div class="clr"></div>
+   				</div>
+   				<div class="item">
+   					<span class="label">&nbsp;<input type="submit" value="充值" id=""></span>
+
+   					<div class="clr"></div>
+   				</div>
+   			</div>
+   		</div>
+         </form>
+   		<div class="m m1">
+   			<div class="mt">
+   				<h3>温馨提示：</h3>
+   			</div>
+			<div class="mc">
+				<p>
+					1. 充值成功后，余额可能存在延迟现象，一般1到5分钟内到账，如有问题，请咨询客服；
+					<br>
+                                            2. 充值金额输入值必须是不小于10且不大于50000的正整数；
+                    
+					<br>
+					3. 您只能用储蓄卡进行充值，如遇到任何支付问题可以查看在线支付帮助；
+					<br>
+					4. 充值完成后，您可以进入账户充值记录页面进行查看余额充值状态。
+				</p>
+			</div>
+   		</div>
+   		
+   		<input type="hidden" value="0" id="balance">
+        <input type="hidden" value="false" id="isWhiteVip">
+   	</div>
+</block>

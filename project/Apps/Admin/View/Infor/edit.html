@@ -1,0 +1,47 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>信息修改</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form class="form-horizontal" method="post" action="{:U('Admin/Infor/update')}" enctype="multipart/form-data">
+          	<input type="hidden" name="id" value="{$info['id']}">
+            <div class="control-group">
+              <label class="control-label">网站名</label>
+              <div class="controls">
+                <input type="text" name="name" class="colorpicker input-big span11"  data-color="#ffffff" value="{$info['name']}">
+                <span class="help-block">请输入网站名</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">网站简介</label>
+              <div class="controls">
+                <input type="text" name="content" class="colorpicker input-big span11"  data-color="#ffffff" value="{$info['content']}">
+                <span class="help-block">请输入网站简介</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">图片</label>
+              <div class="controls">
+                <div class="input-append date datepicker" data-date="12-02-2012">
+                  <input type="file" name="pic">
+                </div>
+                <br>
+                <img src="__PUBLIC__/{$info['pic']}" width="50px">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">网站版权</label>
+              <div class="controls">
+                <input type="text" name="config" value="{$info['config']}" class="datepicker span11"  data-date-format="dd-mm-yyyy" data-date="01-02-2013">
+                <span class="help-block">请输入借阅数量</span> </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-success" type="submit">Save</button>
+              <button class="btn btn-primary" type="submit">Reset</button>
+              <button class="btn btn-info" type="submit">Edit</button>
+              <button class="btn btn-danger" type="submit">Cancel</button>
+            </div>
+          </form>
+        </div>
+  </div>
+</block>

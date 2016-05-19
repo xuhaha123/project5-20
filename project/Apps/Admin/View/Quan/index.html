@@ -1,0 +1,209 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="container-fluid">
+    <div class="quick-actions_homepage">
+      <ul class="quick-actions">
+        <li class="bg_lb"> <a href=""> <i class="icon-signal"></i> <span class="label label-important">10</span>权限管理 </a> </li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function setCookie(name, value) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() + 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+    function getCookie(name)
+    {
+        var regExp = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        var arr = document.cookie.match(regExp);
+        if (arr == null) {
+            return null;
+        }
+        return unescape(arr[2]);
+    }
+</script>
+
+
+  <div class="widget-box">
+       <form action="{:U('Admin/Quan/Index')}" method="get" id="mid">
+          <div class="widget-content nopadding">
+            <div role="grid" class="dataTables_wrapper" id=""><div class=""><div id="" class="dataTables_length">
+            <ul class="select2-results">   </ul></div></div>
+            <select name="num" size="1" aria-controls="DataTables_Table_0" onChange="document.getElementById('mid').submit()" id="select_1" onclick="setCookie('select_1',this.selectedIndex)" >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            </select>
+            <script src="__PUBLIC__/Admin/js/jquery-1.8.3.min.js"></script>
+            <script type="text/javascript">
+            var selectedIndex = getCookie("select_1");
+            // alert(selectedIndex);
+            if(selectedIndex != null) {
+            document.getElementById("select_1").selectedIndex = selectedIndex;
+          }
+          </script>
+
+
+
+           
+
+
+         <!--   <label>Search: <input type="text" aria-controls="DataTables_Table_0"></label></button> -->
+            <label><input value="{$Think.get.keyword}" name="keyword" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
+                            <button class="btn btn-primary">搜索</button>
+
+         </form>
+
+
+        </div></div>
+
+
+     
+<table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
+  <thead>
+    <tr role="row">
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 83px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+        <div class="DataTables_sort_wrapper">ID
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+        </div>
+      </th>
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 230px;" aria-label="Browser: activate to sort column ascending">
+        <div class="DataTables_sort_wrapper">规则路径
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+        </div>
+      </th>
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 272px;" aria-label="Platform(s): activate to sort column ascending">
+        <div class="DataTables_sort_wrapper">权限名称
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span></div>
+      </th>
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 162px;" aria-label="Engine version: activate to sort column ascending">
+        <div class="DataTables_sort_wrapper">状态
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+        </div>
+      </th>
+
+      <th class="ui-state-default" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 230px;" aria-label="Engine version: activate to sort column ascending">
+        <div class="DataTables_sort_wrapper">操作
+            <span class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  
+<tbody role="alert" aria-live="polite" aria-relevant="all">
+  <volist name="res" id="vo">
+    <tr class="gradeA odd">
+          <td class="sorting_1" style="text-align:center">{$vo.id}</td>
+          <td class=" " style="text-align:center">{$vo.name}</td>
+          <td class=" " style="text-align:center">{$vo.title}</td>
+          <td class="center " style="text-align:center"><button class="bts">{$vo.status}</button></td>
+          <td class="center ">&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{:U('Admin/Quan/edit',array('id'=>$vo['id']))}">
+            <button class="btn btn-info btn-edit"><i class="icon-edit"></i>编辑</button></a>&nbsp;&nbsp;
+            <button class="btn btn-danger btn-del bt-de">
+            <i class="icon-remove"></i>删除</button>
+          </td>
+    </tr>
+  </volist>
+</tbody>
+</table>
+  <style type="text/css">
+      #pages a,#pages span{
+       background-color: #fff;
+       border: 1px solid #ddd;
+       color: #337ab7;
+       float: left;
+       line-height: 1.42857;
+       margin-left: -1px;
+       padding: 6px 12px;
+       position: relative;
+       text-decoration: none;
+   }
+   #pages span{
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: #fff;
+  cursor: default;
+  z-index: 2;
+}
+  </style>
+  <div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+   
+    <div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate">
+      <div id="pages">
+        {$pages}
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript">
+  $(function(){
+     $('.bt-de').bind("click",function() {
+     // alert('aaa');
+     var i =$(this).parents('tr').find('.sorting_1').html();
+     // alert(i);
+     var tr =$(this);
+     // alert(tr);
+     $.ajax({
+       url:'{:U("Admin/Quan/del_ajax")}',
+       data:{id:i},
+       type:'get',
+       success:function(data){
+         if(data){
+           tr.parents('tr').remove();
+         }
+       }
+     })
+    });
+
+    $('.bts').bind("click",function(){
+    var a  =$(this).html();
+    var id = $(this).parents('tr').find('td:first').html();
+    var b =$(this);
+    if(a == '开启'){
+           $.ajax({
+            url:'{:U("Admin/Quan/do_ajax")}',
+            data:{id:id,status:0},
+            type:'post',
+            success:function(data){
+              if(data){
+                b.html('关闭');
+              }
+            }
+          })
+
+      // $.post('{:U("Admin/Quan/do_ajax")}',
+      //     {id:id,status:0},
+      //     function(data){
+      //         if(data)
+      //             b.html('关闭');
+      //     })
+    }else if(a == '关闭'){
+      $.ajax({
+        url:'{:U("Admin/Quan/do_ajax")}',
+        data:{id:id,status:1},
+        type:'post',
+        success:function(data){
+          if(data){
+            b.html('开启');
+          }
+        }
+      })
+    }
+        // $.post('{:U("Admin/Quan/do_ajax")}',
+        //       {id:id,status:1},
+        //       function(data){
+        //           if(data)
+        //               b.html('开启');
+        //       })
+        // }
+  })   
+  })
+
+
+  </script>
+
+</block>

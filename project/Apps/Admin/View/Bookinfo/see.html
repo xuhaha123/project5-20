@@ -1,0 +1,108 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>图书详情</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form class="form-horizontal" method="post" action="{:U('Admin/Bookinfo/index')}"  enctype="multipart/form-data">
+            <div class="control-group" style="text-align:center">
+              <h3>{$info['0']['title']}</h3>
+            </div>
+            <div class="control-group">
+              <label class="control-label">作者名</label>
+              <div class="controls">
+                <input type="text" value="{$info['0']['author']}" class="colorpicker input-big span11"  data-color="#ffffff">
+                <span class="help-block"></span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">图书英文名</label>
+              <div class="controls">
+                <input type="text" value="{$info['0']['Englishname']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+                <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">出版社</label>
+              <div class="controls">
+                <input type="text" value="{$info['0']['press']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+                <span class="help-block"></span></div>
+            </div>
+           <div class="control-group">
+              <label class="control-label">平装页码</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['page']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+                <span class="help-block"></span></div>
+            </div>
+           <div class="control-group">
+              <label class="control-label">语言</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['language']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+                <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">开本页码</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['format']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+               <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">条形码</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['bar']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)" >
+               <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">图书尺寸</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['size']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)" >
+               <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">重量(g)</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['weight']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)" >
+               <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">品牌</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['brand']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+              <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">ASIN</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['asin']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+               <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">相关图书</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['relateb']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+               <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">相关图书图片</label>
+              <div class="controls">
+                <img src="__PUBLIC__/{$info[0]['relatepic']}" width="50px">
+              <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">作者简介</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['about']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+              <span class="help-block"></span></div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">借阅次书所需积分</label>
+              <div class="controls">
+                <input type="text" value="{$info[0]['jf']}" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)">
+              <span class="help-block"></span></div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-success" type="submit">返回</button>
+            </div>
+          </form>
+        </div>
+  </div>
+</block>

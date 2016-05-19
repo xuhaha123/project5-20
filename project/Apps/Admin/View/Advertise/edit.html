@@ -1,0 +1,62 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>用户修改</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form class="form-horizontal" method="post" action="{:U('Admin/Advertise/update')}" enctype="multipart/form-data">
+          	<input type="hidden" name="id" value="{$info['id']}">
+            <div class="control-group">
+              <label class="control-label">广告名</label>
+              <div class="controls">
+                <input type="text" name="name" class="colorpicker input-big span11"  data-color="#ffffff" value="{$info['name']}">
+                <span class="help-block">请输入广告名</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">广告简介</label>
+              <div class="controls">
+                <input type="text" name="content" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)" value="{$info['content']}">
+                <span class="help-block">请输入广告简介</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">广告链接</label>
+              <div class="controls">
+                <input type="url" name="url" class="colorpicker input-big span11"  data-color="#ffffff" value="{$info['url']}">
+                <span class="help-block">请输入广告网址必须以'http://...'格式填写</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">添加时间</label>
+              <div class="controls">
+                <input type="text" name="time" class="colorpicker input-big span11"  data-color="#ffffff" value="{$info['time']}">
+                <span class="help-block">请输入广告添加时间</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">状态</label>
+              <div class="controls">
+               <select name="status" id="">
+                 <option value="1"<if condition="$info['status'] eq 1">selected</if>>上线</option>
+                 <option value="0"<if condition="$info['status'] eq 0">selected</if>>下线</option>
+               </select>
+                <span class="help-block">请确认是否上线</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">图片上传</label>
+              <div class="controls">
+                <div class="input-append date datepicker" data-date="12-02-2012">
+                  <input type="file" name="pic">
+                </div>
+                <br>
+                <img src="__PUBLIC__/{$info['pic']}" width="50px">
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-success" type="submit">Save</button>
+              <button class="btn btn-primary" type="submit">Reset</button>
+              <button class="btn btn-info" type="submit">Edit</button>
+              <button class="btn btn-danger" type="submit">Cancel</button>
+            </div>
+          </form>
+        </div>
+  </div>
+</block>

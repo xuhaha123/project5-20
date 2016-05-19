@@ -1,0 +1,203 @@
+<extend name="./Head/head"/>
+<block name="title">
+<title>图书详情</title>
+</block>
+<block name="head">
+	<!-- header-section-ends -->
+	<!-- content-section-starts -->
+ <div class="main">
+    <!--single-page-->
+	<div class="single-page">
+		<div class="container">
+			<div class="col-md-8 single-page-left">
+				<div class="single-page-info">
+					<img src="__PUBLIC__{$info['0']['pic']}" style="width:500px" /> 
+					<h5>类别</h5>
+					<p>{$info['0']['name']}</p>
+					<h5>{$info['0']['title']}</h5>
+					<p>作者：{$info['0']['author']}</p>
+					<h5>借阅积分</h5>
+					<p>{$info['0']['jf']}</p>
+					<h5>剩余数量</h5>
+					<p>{$info['0']['num']}</p>
+					<h5>借阅数量</h5>
+					<form action="{:U('Home/Comment/insert',array('id'=>$info['0']['id']))}" method="post">
+					<a onclick="jian()" style="float:left;width:30px;height:30px;background:white;border:1px solid #ccc;text-align:center"><h1 style="margin-top:-12px">-</h1></a><input type="text" value="1" id="num" name="j_num"  style="float:left;width:30px;height:30px;text-align:center"><a onclick="jia()" style="float:left;width:30px;height:30px;background:white;border:1px solid #ccc;text-align:center"><h1 style="margin-top:-12px">+</h1></a>
+					<div class="posts-right">
+							<button class="btn btn-primary hvr-rectangle-in" >提交借阅</button>
+						</div>
+					<script>
+					function jian()
+					{
+							var num=document.getElementById('num').value;
+							var num1 = parseInt(num);
+							num1=num1-1;
+							if(num1<1)
+							{
+								num1=1;
+							}
+							document.getElementById('num').value=num1;
+						}
+	
+						function jia()
+						{
+							var num=document.getElementById('num').value;
+							var num1 = parseInt(num);
+							num1=num1+1;
+							
+							document.getElementById('num').value=num1;
+	
+						}
+
+					</script>
+					</form>
+					<div class="comment-icons">
+					<h5>相关作品</h5>
+						<ul>
+							<li><span class="glyphicon glyphicon-bookmark"></span><a href="__PUBLIC__/Home/#">{$info['0']['relateb']}</a> </li>
+							<li><span class="glyphicon glyphicon-thumbs-up"></span><a href="__PUBLIC__/Home/#">15</a></li>
+							<li><span class="glyphicon glyphicon-book"></span><a href="{:U('Home/Comment/Collect',array('id'=>$info['0']['id']))}">收藏</a></li>
+							<li><span class="glyphicon glyphicon-big"></span><a>
+							<?php
+								$id = $_GET['id'];
+								// echo $id;
+								$title = $info['0']['title'];
+								// echo $title;
+								// var_dump($title);die();
+								$sql = "select count(book) from collect where book='$title'";
+								// var_dump($sql);die();
+								// echo $sql;die();
+								$result = mysql_query($sql);
+								// var_dump($result);die();
+								$row = mysql_fetch_assoc($result);
+								// var_dump($row);
+								$t = $row['count(book)'];
+								echo "总收藏次数为：$t";
+							?></a></li>
+						</ul>
+					</div>
+				</div>	
+				<div class="admin-text">
+					<h5>作者简介</h5>
+					<div class="admin-text-left">
+						<a href="__PUBLIC__/Home/#"><img src="__PUBLIC__/Home/images/icon1.png" alt=""/></a>
+					</div>
+					<div class="admin-text-right">
+						<p>{$info['0']['about']}</p>
+						<span><a href="__PUBLIC__/Home/#">{$info['0']['author']}</a></span>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-12 single-page-right">
+				<div class="category">
+					<h4>相关评论</h4>
+					<ul class="list-group">
+					<foreach name="res" item="vo">
+						
+							<li style="float:left;width:200px;height:90px;">
+							<a href="" class="list-group-item">{$vo.name}</a>
+							<a href="" class="list-group-item">{$vo.context}</a>
+							</li>
+					
+					</foreach>
+					</ul>
+					
+				</div>
+				</div>	
+			</div>	
+			<div class="col-md-4 single-page-right">
+				<div class="category">
+					<h4>图书信息</h4>
+					<div class="list-group">
+						<a href="" class="list-group-item">外文书名: {$info['0']['Englishname']}</a>
+						<a href="" class="list-group-item">平装: {$info['0']['page']}页</a>
+						<a href="" class="list-group-item">语种： {$info['0']['language']}</a>
+						<a href="" class="list-group-item">开本: {$info['0']['format']}</a>
+						<a href="" class="list-group-item">条形码: {$info['0']['bar']}</a>
+						<a href="" class="list-group-item">尺寸: {$info['0']['size']}</a>
+						<a href="" class="list-group-item">重量: {$info['0']['weight']} (g)</a>
+						<a href="" class="list-group-item">品牌: {$info['0']['brand']}</a>
+						<a href="" class="list-group-item">ASIN: {$info['0']['asin']}</a>
+						<a href="" class="list-group-item">出版社: {$info['0']['press']}</a>
+						<a href="" class="list-group-item">名人推荐: 
+						<?php
+                    		$str = $info['0']['b_content'];
+                    		$html = htmlspecialchars_decode($str);
+                    		echo $html;
+                		?>
+						</a>
+					</div>
+				</div>	
+				<div class="recent-posts">
+					<h4>相关图书</h4>
+					<div class="recent-posts-info">
+						<div class="posts-left sngl-img">
+							<a href=""><img src="__PUBLIC__/{$info['0']['relatepic']}" alt="" style="width:140px"/> </a>
+						</div>
+						<div class="posts-right">
+							<lable>June 5, 2015</lable>
+							<h5><a href="__PUBLIC__/Home/single.html">FINIBUS BONORUM MALORUM </a></h5>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing incididunt.</p>
+							<a href="__PUBLIC__/Home/single.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+						</div>
+						<div class="clearfix"> </div>
+					</div>	
+					<div class="recent-posts-info">
+						<div class="posts-left sngl-img">
+							<a href="__PUBLIC__/Home/single.html"> <img src="__PUBLIC__/Home/images/img16.jpg" alt=""/> </a>
+						</div>
+						<div class="posts-right">
+							<lable>June 5, 2015</lable>
+							<h5><a href="__PUBLIC__/Home/single.html">FINIBUS BONORUM MALORUM </a></h5>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing incididunt.</p>
+							<a href="__PUBLIC__/Home/single.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
+						</div>
+						<div class="clearfix"> </div>
+					</div>	
+					<div class="clearfix"> </div>
+				</div>
+				<!-- <div class="comments">
+					<h4>回复评论</h4>
+					<div class="comments-info">
+						<div class="cmnt-icon-left">
+							<a href="__PUBLIC__/Home/single.html"><img src="__PUBLIC__/Home/images/icon1.png" alt=""/></a>
+						</div>
+						<div class="cmnt-icon-right">
+							<p>June 1, 2015时间</p>
+							<p><a href="__PUBLIC__/Home/single.html">用户</a></p>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="cmmnt">回复内容</p>
+					</div>
+					<div class="comments-info cmnts-mddl">
+						<div class="cmnt-icon-left">
+							<a href="__PUBLIC__/Home/single.html"><img src="__PUBLIC__/Home/images/icon1.png" alt=""/></a>
+						</div>
+						<div class="cmnt-icon-right">
+							<p>June 1, 2015</p>
+							<p><a href="__PUBLIC__/Home/single.html">用户</a></p>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="cmmnt">回复内容</p>
+					</div>
+					<div class="comments-info">
+						<div class="cmnt-icon-left">
+							<a href="__PUBLIC__/Home/single.html"><img src="__PUBLIC__/Home/images/icon1.png" alt=""/></a>
+						</div>
+						<div class="cmnt-icon-right">
+							<p>June 1, 2015</p>
+							<p><a href="__PUBLIC__/Home/single.html">用户</a></p>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="cmmnt">回复内容</p>
+					</div>
+				</div> -->
+			</div>
+			<div class="clearfix"> </div>
+		</div>	
+	</div>
+<!--//single-page-->
+
+ </div>
+</block>	<!-- content-section-ends -->
+ 

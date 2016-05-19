@@ -1,0 +1,35 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>轮播修改</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form class="form-horizontal" method="post" action="{:U('Admin/Lunbo/update')}" enctype="multipart/form-data">
+          	<input type="hidden" name="id" value="{$info['id']}">
+            <div class="control-group">
+              <label class="control-label">轮播名</label>
+              <div class="controls">
+                <input type="text" name="name" class="colorpicker input-big span11"  data-color="#ffffff" value="{$info['name']}">
+                <span class="help-block">请输入轮播名</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">图片修改</label>
+              <div class="controls">
+                <div class="input-append date datepicker" data-date="12-02-2012">
+                  <input type="file" name="pic">
+                </div>
+                <br>
+                <img src="__PUBLIC__/{$info['pic']}" width="50px">
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-success" type="submit">Save</button>
+              <button class="btn btn-primary" type="submit">Reset</button>
+              <button class="btn btn-info" type="submit">Edit</button>
+              <button class="btn btn-danger" type="submit">Cancel</button>
+            </div>
+          </form>
+        </div>
+  </div>
+</block>
