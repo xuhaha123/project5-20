@@ -1,0 +1,28 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>图书馆公告修改</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form class="form-horizontal" method="post" action="{:U('Admin/Title/update')}" enctype="multipart/form-data">
+          	<input type="hidden" name="id" value="{$in['id']}">
+            <div class="control-group">
+              <label class="control-label">公告名</label>
+              <div class="controls">
+                <input type="text" name="title" value="{$in['title']}">
+                <span class="help-block">请输入公告名</span> </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label">时间</label>
+              <div class="controls">
+                <input type="text" name="time" value="<?php echo date('Y-m-d H:i:s',time()); ?>">
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-success" type="submit">修改</button>
+            </div>
+          </form>
+        </div>
+  </div>
+</block>

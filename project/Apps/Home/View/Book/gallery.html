@@ -1,0 +1,109 @@
+<extend name="./Head/head"/>
+
+	<!-- header-section-ends -->
+	<!-- content-section-starts -->
+<block name="title">
+<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery-1.8.3.min.js"></script>
+<script src="__PUBLIC__/Home/js/jquery.chocolat.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Home/css/chocolat.css" type="text/css"/>
+<title>图书</title>
+</block>
+
+<block name="head">
+<style type="text/css">
+li{ list-style: none;}
+.yi{float:left;width:100px;line-height:10px;}
+.yi h4{text-align:center;border:0px solid #f90;}
+.nav2{width:1000px;margin-left: 90px;float:left;}
+.yi ul{width: 95px;height:auto;margin-top:15px;border:0px solid blue;display:none;text-align: center;}
+.yi ul li{height:30px;}
+.yi a{text-decoration:none;color:#007FFF;}
+ul li a:hover{color:#f90;}
+.nav2{position:absolute;z-index:1;text-align: center;margin-left:70px;}
+.gallery-bottom{margin-top: 150px;}
+</style>
+
+	<!-- header-section-ends -->
+	<!-- content-section-starts -->
+    <div class="content">
+   	<div class="container">
+	<div class="gallery-head" id="portfolio">
+	<h3>经典图书</h3>
+	<!-- 二级导航栏 -->
+	<div class="nav2" >		    
+		<foreach name="list[0]" item="vo">
+				<div class="yi">
+				<h4><a href="{:U('Home/Comment/index',array('id' =>$vo['id']))}">{$vo.name}</a></h4>
+				<ul>
+				<foreach name="list[$vo['id']]" item="vn">
+					
+						<li><a href="{:U('Home/Comment/index',array('id' =>$vn['id']))}">{$vn.name}</a></li>
+					
+				</foreach>
+				</ul>
+				</div>
+		</foreach>
+		<div class="clearfix"></div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="gallery-bottom" >
+		 	<ul>
+		 		<foreach name="res" item="vo">
+		 		<li class="col-md-4 gallery-left" style="border:1px solid #ccc; ">
+		 		<a href="{:U('Home/Comment/index',array('id'=>$vo['id']))}">
+		 		<img src="__PUBLIC__{$vo.pic}" width="100px" height="450px">书名: {$vo.title}
+		 		</a>
+		 		</li>
+		 		</foreach>
+		 		
+		 		
+		 	</ul>
+					<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+</div>
+
+<script src="__PUBLIC__/Admin/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	//给window绑定事件
+	$(window).scroll(function(){
+		// alert('aaaa');
+		//获取所有li标签
+		$('li').each(function(){
+			//可视区域高度
+			var kh =$(window).height();
+			//y轴滚动距离
+			var sy =$(window).scrollTop();
+			//元素距离文档顶部的距离
+			var sd =$(this).offset().top;
+			// sd < kh + sy
+			if(kh + sy > sd){
+				//图片显示
+				var src =$(this).find('img').attr('Imgsrc');
+				$(this).find('img').attr('src',src);
+				// $(this).attr('isLoaded',1);
+			}
+		})
+	})
+
+</script>
+
+<script type="text/javascript">
+	var yi = document.getElementsByClassName('yi');
+
+	for(var i = 0;i < yi.length;i++){
+		yi[i].onmouseover =function(){
+			this.getElementsByTagName('ul')[0].style.display ="block";
+		}
+		yi[i].onmouseout =function(){
+			this.getElementsByTagName('ul')[0].style.display ="none";
+		}
+
+	}
+
+
+</script>
+
+
+</block>

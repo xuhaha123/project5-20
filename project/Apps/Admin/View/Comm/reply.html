@@ -1,0 +1,67 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="container-fluid">
+    <div class="">
+      <ul class="quick-actions">
+        <li class="bg_lb"> <a href=""> <i class="icon-signal"></i> <span class="label label-important">10</span> 评论回复 </a> </li>
+      </ul>
+    </div>
+  </div>
+ 
+     <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5> 评论回复</h5>
+        </div>
+        <div class="widget-content nopadding">
+        
+          <form class="form-horizontal" method="post" action="{:U('Admin/Comm/update1')}">
+ 
+            
+            <div class="control-group">
+              <label class="control-label" ></label>
+              <div class="controls">
+                <input type="hidden" value="{$info['id']}" name="id" data-color="#ffffff">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" >name</label>
+              <div class="controls">
+                <input type="text" value="{$info['name']}" name="name" data-color="#ffffff" readonly>
+                </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label">留言内容</label>
+              <div class="controls">
+                <textarea name="context" readonly>{$info['context']}</textarea>
+              </div>
+            </div>
+
+             <!-- <div class="control-group">
+              <label class="control-label">回复状态</label>
+              <div class="controls">
+                <input name="status" value="{$res[0]['display']}" readonly></input>
+              </div>
+            </div>
+ -->
+            <div class="control-group">
+              <label class="control-label">回复评论</label>
+              <div class="controls">
+                <textarea name="reply"></textarea>
+              </div>
+            </div>
+            
+            <input type="hidden" name="display" value="2">
+           
+            <div class="form-actions">
+              <button class="btn btn-info" type="submit">回复</button>
+             <!--  <button class="btn btn-primary" type="submit">Reset</button>
+              <button class="btn btn-info" type="submit">Edit</button>
+              <button class="btn btn-danger" type="submit">Cancel</button> -->
+            </div>
+          </form>
+
+        </div>
+  </div>
+
+</block>

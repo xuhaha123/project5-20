@@ -1,0 +1,114 @@
+<extend name="./Head/head"/>
+
+
+<block name="title">
+<title>评论表</title>
+</block>
+<block name="head">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css1/ht.css"/>
+<div class="typrography">
+  <div class="container">
+      <h3 class="type text-center">我的图书馆</h3>
+        <div id="main-r">
+  <div id="main-p">
+              
+      <div class="left fl">
+            <div class="div1">
+            <div class="left_top">
+              <img src="__PUBLIC__/Home/images/images2/bbb_01.jpg">
+                <img src="__PUBLIC__/Home/images/images2/bbb_02.jpg" id="2">
+                <img src="__PUBLIC__/Home/images/images2/bbb_03.jpg">
+                <img src="__PUBLIC__/Home/images/images2/bbb_04.jpg">
+            </div>
+            <div class="div2">
+            <div class="jbsz"></div>
+                <a href="{:U('Home/User/index')}">个人信息</a>
+            </div>
+             <div class="div2">
+            <div class="xwzx"></div>
+               我的借阅
+            </div>
+            <div class="div3">
+                 <ul>
+                 <li> <a href="{:U('Home/Alljieyue/alljieyue')}">全部借阅</a></li>
+               
+                 </ul>
+            </div>
+            <div class="div2">
+            <div class="zxcp"></div>
+                我的积分
+            </div>
+            <div class="div3">
+             <ul>
+            <li>积分管理</li>
+            <li>积分兑换</li>
+                
+             </ul>
+            </div>
+            <div class="div2">
+            <div class="lmtj"></div>
+                评价管理
+            </div>
+            <div class="div3">
+                <ul>
+            <li><a href="{:U('Home/User/comment')}">用户评价</a></li>
+                 </ul>
+            </div>
+  
+            <div class="div2">
+            <div class="zxcp"></div>
+                 服务中心
+            </div>
+            <div class="div3">
+                <ul>
+            <li><a href="{:U('Home/Kf/index')}">在线客服</a></li>
+               
+                 </ul>
+            </div>
+            <div class="div2">
+            <div class="lmtj"></div>
+                联系方式
+            </div>
+            <div class="div3">
+                <ul>
+            <li><a href="{:U('Home/Re/index')}">email</a></li>
+                 </ul>
+            </div>
+            </div>
+            </div>
+     <style>
+        *{margin:0;padding:0;}
+        dialog{display:block;width:500px;height:375px;border:1px solid gray;padding:10px;margin:0 auto;}
+    </style>
+      <div class="col-md-6 dal">
+        <form action="{:U('Home/User/insert')}" method="get">
+          <h3 style="color:black;margin-top:35px;">用户评论</h3>         
+
+        <dialog>
+        <br>
+        书名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="text" value="{$value.book}" onfocus="this.value = '{$value.book}';" onblur="if (this.value == '') {this.value = '{$value.book}';}" name="book" readonly>
+        <textarea onfocus="if(this.value == '') this.value='{$comms['context']}';" onblur="if(this.value == '') this.value='{$comms['context']}';" name="context" readonly>{$value.context}</textarea><br>
+        <input type="submit" value="显示回复评论内容" disabled="true"><br><br>
+        <textarea onfocus="if(this.value == '') this.value='{$comms['reply']}';" onblur="if(this.value == '{$comms['reply']}') this.value='{$comms['reply']}';"name="reply" disabled="true">{$value.reply}</textarea>
+
+        </dialog>
+        </form> 
+      </div>
+   
+  </center>
+</div>
+    
+
+      
+  </div>    
+ <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+<script>
+$(function(){
+  $(".div2").click(function(){ 
+    $(this).next("div").slideToggle("slow").siblings(".div3:visible").slideUp("slow");
+  });
+});
+</script>
+<div class="clear"></div>
+</block>
+

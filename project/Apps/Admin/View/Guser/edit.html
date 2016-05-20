@@ -1,0 +1,40 @@
+<extend name="./Public/public"/>
+<block name="title">
+  <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>用户修改</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form class="form-horizontal" method="post" action="{:U('Admin/Guser/update')}" enctype="multipart/form-data">
+          	<input type="hidden" name="id" value="{$info['id']}">
+            <div class="control-group">
+              <label class="control-label">用户名</label>
+              <div class="controls">
+                <input type="text" name="username" class="colorpicker input-big span11"  data-color="#ffffff" value="{$info['username']}">
+                <span class="help-block">请输入用户名</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">密码</label>
+              <div class="controls">
+                <input type="password" name="password" class="colorpicker span11" data-color-format="rgba"  data-color="rgba(344,232,53,0.5)" value="{$info['password']}">
+                <span class="help-block">请输入密码</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">等级</label>
+              <div class="controls">
+               <select name="level" id="">
+                 <option value="管理员"<if condition="$info['level'] eq 0">selected</if>>管理员</option>
+                 <option value="高级管理员"<if condition="$info['level'] eq 1">selected</if>>高级管理员</option>
+               </select>
+                <span class="help-block">请输入等级</span> </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-success" type="submit">Save</button>
+              <button class="btn btn-primary" type="submit">Reset</button>
+              <button class="btn btn-info" type="submit">Edit</button>
+              <button class="btn btn-danger" type="submit">Cancel</button>
+            </div>
+          </form>
+        </div>
+  </div>
+</block>

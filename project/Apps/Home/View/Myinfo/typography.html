@@ -1,0 +1,100 @@
+<extend name="./Head/head"/>
+<block name="title">
+<title>我的图书馆</title>
+</block>
+<block name="head">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css1/ht.css"/>
+<div class="typrography">
+  <div class="container">
+      <h3 class="type text-center">我的图书馆</h3>
+      	<div id="main-r">
+	<div id="main-p">
+              
+			<div class="left fl">
+            <div class="div1">
+            <div class="left_top">
+	            <img src="__PUBLIC__/Home/images/images2/bbb_01.jpg">
+                <img src="__PUBLIC__/Home/images/images2/bbb_02.jpg" id="2">
+                <img src="__PUBLIC__/Home/images/images2/bbb_03.jpg">
+                <img src="__PUBLIC__/Home/images/images2/bbb_04.jpg">
+            </div>
+            <div class="div2">
+  	        <div class="jbsz"></div>
+                <a href="{:U('Home/User/index')}">个人信息</a>
+            </div>
+             <div class="div2">
+  	        <div class="xwzx"></div>
+               我的借阅
+            </div>
+            <div class="div3">
+                 <ul>
+		             <li> <a href="">全部借阅</a></li>
+		           
+                 </ul>
+            </div>
+            <div class="div2">
+  	        <div class="zxcp"></div>
+                我的积分
+            </div>
+            <div class="div3">
+             <ul>
+		        <li>积分管理</li>
+		        <li>积分兑换</li>
+                
+             </ul>
+            </div>
+            <div class="div2">
+  	        <div class="lmtj"></div>
+                评价管理
+            </div>
+            <div class="div3">
+                <ul>
+		        <li><a href="">用户评价</a></li>
+                 </ul>
+            </div>
+  
+            <div class="div2">
+  	        <div class="zxcp"></div>
+                 服务中心
+            </div>
+            <div class="div3">
+                <ul>
+		        <li><a href="{:U('Home/Kf/index')}">在线客服</a></li>
+               
+                 </ul>
+            </div>
+            <div class="div2">
+  	        <div class="lmtj"></div>
+                联系方式
+            </div>
+            <div class="div3">
+                <ul>
+		        <li>email</li>
+                 </ul>
+            </div>
+            </div>
+            </div>
+		<div class="success9">
+			
+	<center>
+  <div style="margin-top:-60px">
+   <font style="color:#F6416C;font-weight:bold">欢迎<?php echo $_SESSION['username'];?>进入个人中心</font>
+  </center>
+		</div>
+			
+		</div>
+	</div>
+		
+
+      
+  </div>    
+ <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+<script>
+$(function(){
+	$(".div2").click(function(){ 
+		$(this).next("div").slideToggle("slow").siblings(".div3:visible").slideUp("slow");
+	});
+});
+</script>
+<div class="clear"></div>
+</block>

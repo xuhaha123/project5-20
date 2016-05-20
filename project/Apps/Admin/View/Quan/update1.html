@@ -1,0 +1,66 @@
+<extend name="./Public/public"/>
+<block name="title">
+
+  <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>分组修改</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form class="form-horizontal" method="post" action="{:U('Admin/Quan/save')}">
+
+            
+
+           
+            <div class="control-group">
+              <label class="control-label" >组名</label>
+              <div class="controls">
+                <input type="text" name="title" data-color="#ffffff" value="{$title}" style="height:30px">
+                <input type="hidden" name="id" value="{$id}">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" >组用户</label>
+              <div class="controls">
+              <foreach name="users" item="vo">
+                <input type="checkbox" name="users[]" value="{$vo.uid}"
+                <if condition="$vo.have eq 1">checked onclick="return false;"</if>>{$vo.username}
+                <!-- <input type="checkbox" name="users[]" value="{$vo.uid}">{$vo.username} -->
+              </foreach>
+              </div>
+            </div>
+                                   
+            <div class="control-group">
+              <label class="control-label">权限名称</label>
+            
+              <div class="controls">
+                <foreach name="rules" item="vo">
+                <label>
+                  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="rules[]" style="margin-top:-3px" value="{$vo.id}"<if condition="$vo.have eq 1">checked</if>
+                                        >
+                   &nbsp;{$vo.title}
+                </label>
+                </foreach>
+              <!-- <foreach name="rules" item="vo">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="rules[]" value="{$vo.id}"
+                                        <if condition="$vo.have eq 1">checked</if>
+                                        >{$vo.title}
+                                    </label>
+                                    </foreach> -->
+              </div>
+            </div>
+            
+            
+            
+           
+            <div class="form-actions">
+              <button class="btn btn-success" type="submit">修改</button>
+             
+              <!-- <button class="btn btn-info" type="submit">Edit</button>
+              <button class="btn btn-danger" type="submit">Cancel</button> -->
+            </div>
+          </form>
+        </div>
+  </div>
+
+</block>
